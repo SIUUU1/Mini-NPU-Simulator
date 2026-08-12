@@ -463,7 +463,7 @@ def run_mode2(data_path=DATA_FILE):
 
     # [4] 결과 요약
     total = len(results)                 # 전체 케이스 수
-    
+
     passed = sum(1 for r in results if r["status"] == "PASS")
     failed = total - passed
     print("#" + "-" * 40)
@@ -485,18 +485,24 @@ def run_mode2(data_path=DATA_FILE):
 
 def main():
     print("=== Mini NPU Simulator ===")
-    print("[모드 선택]")
-    print("1. 사용자 입력 (3x3)")
-    print("2. data.json 분석")
-    choice = input("선택: ").strip()
-
-    if choice == "1":
-        run_mode1()
-    elif choice == "2":
-        run_mode2()
-    else:
-        print("잘못된 선택입니다. 1 또는 2 를 입력하세요.")
-
+ 
+    while True:
+        print()
+        print("[ 메뉴 ]")
+        print("1. 사용자 입력 (3x3)")
+        print("2. data.json 분석")
+        print("3. 종료")
+        choice = input("선택: ").strip()
+ 
+        if choice == "1":
+            run_mode1()
+        elif choice == "2":
+            run_mode2()
+        elif choice == "3":
+            print("프로그램을 종료합니다.")
+            break
+        else:
+            print("잘못된 선택입니다. 1, 2, 3 중에서 입력하세요.")
 
 if __name__ == "__main__":
     main()
